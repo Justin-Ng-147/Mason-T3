@@ -1,8 +1,8 @@
 #include "main.h"
 
 
-pros::MotorGroup left({LEFTMOTOR1PORT,-LEFTMOTOR2PORT,-LEFTMOTOR3PORT},pros::MotorGearset::blue);
-pros::MotorGroup right({-RIGHTMOTOR1PORT,RIGHTMOTOR2PORT,RIGHTMOTOR3PORT},pros::MotorGearset::blue);
+pros::MotorGroup left({-LEFTMOTOR1PORT,LEFTMOTOR2PORT,LEFTMOTOR3PORT},pros::MotorGearset::blue);
+pros::MotorGroup right({RIGHTMOTOR1PORT,-RIGHTMOTOR2PORT,-RIGHTMOTOR3PORT},pros::MotorGearset::blue);
 
 pros::Imu imu(IMUPORT);
 pros::Rotation vertical_enc(-VERTICALENCODERPORT);
