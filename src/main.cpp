@@ -127,28 +127,18 @@ void opcontrol() {
     right.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
 	// mogo.set_value(true);
 
-	bool pto_flag = true;
-	bool pto_pressed = true;
+	bool twopto_flag = true;
+	bool twopto_pressed = true;
+
 	bool mogo_flag = true;
 	bool mogo_pressed = true;
-	bool claw_flag = true;
-	bool claw_pressed = true;
+	
 	bool hang_flag = true;
 	bool hang_pressed = true;
-	bool deploy_flag = true;
-	bool deploy_pressed = true;
-	bool swiper_flag = false;
-	bool swiper_pressed = true;
 
 	bool b_pressed = true;
 	bool y_pressed = true;
-
 	bool arm_pressed = true;
-
-	// if (intake_task != nullptr) {
-	// 	intake_task->notify();
-	// }
-	// init_driver_intake();
 
 	while (true) {
 		#pragma region arcade
@@ -159,7 +149,7 @@ void opcontrol() {
 		right.move(dir-turn);
 		#pragma endregion arcade
 
-		
+		#pragma region arm
 		if(master.get_digital(DIGITAL_L1)){
 			if(!arm_pressed){
 				arm.move(127);
@@ -189,71 +179,6 @@ void opcontrol() {
 			}
 		}
 
-
-
-		#pragma region intake r1
-		if(master.get_digital(DIGITAL_R1)){
-			// intake.move(127);
-			set_intake_speed(127,false);
-		}
-		else if(master.get_digital(DIGITAL_R2)){
-			// intake.move(-127);
-			set_intake_speed(-127,false);
-		}
-		else{
-			// intake.move(0);
-			set_intake_speed(0,false);
-		}
-		#pragma endregion intake
-
-
-		#pragma region mogo x
-		if(master.get_digital(DIGITAL_DOWN) && !mogo_pressed){
-			mogo_flag = !mogo_flag;
-			mogo.set_value(mogo_flag);
-			mogo_pressed = true;
-		}
-		else if(master.get_digital(DIGITAL_DOWN) != 1 && mogo_pressed){
-			mogo_pressed = false;
-		}
-
-		
-		// else if(mogo_seated() && !mogo_flag && !mogo_pressed)
-		// {
-		// 	mogo.set_value(true);
-		// 	mogo_flag = true;
-		// }
-
-		if(master.get_digital(DIGITAL_X) && !hang_pressed){
-			hang_flag = !hang_flag;
-			intake_lift.set_value(hang_flag);
-			hang_pressed = true;
-		}
-		else if(master.get_digital(DIGITAL_X) != 1 && hang_pressed){
-			hang_pressed = false;
-		}
-		
-		#pragma endregion mogo
-
-		if(master.get_digital(DIGITAL_RIGHT) && !swiper_pressed){
-			swiper_flag = !swiper_flag;
-			swiper.set_value(swiper_flag);
-			swiper_pressed = true;
-		}
-		else if(master.get_digital(DIGITAL_RIGHT) != 1 && swiper_pressed){
-			swiper_pressed = false;
-		}
-
-
-		#pragma region swiper b
-		// if(master.get_digital(DIGITAL_B) && !swiper_pressed){
-		// 	swiper_flag = !swiper_flag;
-		// 	swiper.set_value(swiper_flag);
-		// 	swiper_pressed = true;
-		// }
-		// else if(master.get_digital(DIGITAL_B) != 1 && swiper_pressed){
-		// 	swiper_pressed = false;
-		// }
 		if(master.get_digital(DIGITAL_B) && !b_pressed){
 			// swiper_flag = !swiper_flag;
 			b_pressed = true;
@@ -290,19 +215,54 @@ void opcontrol() {
 			set_intake_speed(127);
 			arm.move(0);
 		}
+		#pragma endregion arm
 
-		
+		#pragma region intake r1
+		if(master.get_digital(DIGITAL_R1)){
+			// intake.move(127);
+			set_intake_speed(127,false);
+		}
+		else if(master.get_digital(DIGITAL_R2)){
+			// intake.move(-127);
+			set_intake_speed(-127,false);
+		}
+		else{
+			// intake.move(0);
+			set_intake_speed(0,false);
+		}
+		#pragma endregion intake r1
 
-		// if(master.get_digital(DIGITAL_DOWN) && !deploy_pressed){
-		// 	deploy_flag = !deploy_flag;
-		// 	deploy.set_value(deploy_flag);
-		// 	deploy_pressed = true;
-		// }
-		// else if(master.get_digital(DIGITAL_DOWN) != 1 && deploy_pressed){
-		// 	deploy_pressed = false;
-		// }
+		#pragma region mogo down
+		if(master.get_digital(DIGITAL_DOWN) && !mogo_pressed){
+			mogo_flag = !mogo_flag;
+			mogo.set_value(mogo_flag);
+			mogo_pressed = true;
+		}
+		else if(master.get_digital(DIGITAL_DOWN) != 1 && mogo_pressed){
+			mogo_pressed = false;
+		}
+		#pragma endregion mogo down
+
+		#pragma region hang
+		if(master.get_digital(DIGITAL_UP) && !twopto_pressed){
+			twopto_flag = !twopto_flag;
+			twopto.set_value(twopto_flag);
+			twopto_pressed = true;
+		}
+		else if(master.get_digital(DIGITAL_UP) != 1 && twopto_pressed){
+			twopto_pressed = false;
+		}
 		
-		#pragma endregion swiper
+		if(master.get_digital(DIGITAL_X) && !hang_pressed){
+			hang_flag = !hang_flag;
+			hangpto.set_value(hang_flag);
+			hang_pressed = true;
+		}
+		else if(master.get_digital(DIGITAL_X) != 1 && hang_pressed){
+			hang_pressed = false;
+		}
+		#pragma endregion hang
+
 		pros::delay(20);                               // Run for 20 ms then update
 	}
 }
