@@ -1,0 +1,18 @@
+#include "main.h"
+
+
+pros::MotorGroup intake({-7,10});
+pros::Motor arm(9);
+pros::ADIDigitalOut mogo('A');
+pros::ADIDigitalOut twopto('B');
+pros::ADIDigitalOut swiper('C');
+pros::ADIDigitalOut hangpto('D');
+
+pros::Rotation arm_control(19);
+pros::Distance distance(8);
+pros::Distance top_distance(16);
+pros::Distance mogo_distance(13);
+pros::Optical ring_color(20);
+
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+
