@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-// new bot red - teamwork
+// t3 bot red - teamwork
 void red1(){
    // setup
     chassis.setPose(0,0,143.5);
