@@ -33,7 +33,7 @@ void red1(){
     chassis.turnToPoint(-50,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
     chassis.moveToPoint(-50,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
 
-    chassis.moveToPoint(-14, 30,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-14, 34,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
     fast_move(-36,26,2000,true);
     
