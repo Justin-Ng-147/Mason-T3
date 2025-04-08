@@ -13,6 +13,7 @@ extern pros::Distance distance;
 extern pros::Distance top_distance;
 extern pros::Distance mogo_distance;
 extern pros::Optical ring_color;
+extern pros::Rotation intake_control;
 
 extern pros::Controller master;
 

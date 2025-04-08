@@ -11,8 +11,9 @@ pros::ADIDigitalOut hangpto('D');
 pros::Rotation arm_control(19);
 pros::Distance distance(8);
 pros::Distance top_distance(16);
-pros::Distance mogo_distance(13);
-pros::Optical ring_color(20);
+pros::Distance mogo_distance(15);
+pros::Optical ring_color(1);
+pros::Rotation intake_control(20);
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
