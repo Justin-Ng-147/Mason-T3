@@ -10,7 +10,7 @@ extern pros::ADIDigitalOut hangpto;
 
 extern pros::Rotation arm_control;
 extern pros::Distance distance;
-extern pros::Distance top_distance;
+extern pros::Distance intake_distance;
 extern pros::Distance mogo_distance;
 extern pros::Optical ring_color;
 extern pros::Rotation intake_control;

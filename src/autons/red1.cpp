@@ -30,8 +30,8 @@ void red1(){
     set_intake_speed(127,false);
     chassis.turnToPoint(-26.5,45,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,45,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-55,45,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-55,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-58,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-58,45,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 30,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
@@ -48,7 +48,7 @@ void red1(){
     chassis.moveToPoint(10,10,2000,{.minSpeed=5,.earlyExitRange=3});
     pros::Task skills_task2{[=]
     {
-        while(top_distance.get_distance()>100) pros::delay(10);
+        while(intake_distance.get_distance()>50) pros::delay(10);
         pros::delay(500);
         set_intake_speed(0);
     }};

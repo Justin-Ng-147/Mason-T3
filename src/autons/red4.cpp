@@ -50,7 +50,7 @@ void red4(){
     chassis.moveDistance(15,1000);
     // pros::Task red_pos_task2{[=]
     //     {
-    //         while(top_distance.get_distance()>50) pros::delay(10);
+    //         while(intake_distance.get_distance()>50) pros::delay(10);
     //         pros::delay(500);
     //         set_intake_speed(0);
     //     }};

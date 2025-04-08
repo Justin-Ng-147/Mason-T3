@@ -10,7 +10,7 @@ pros::ADIDigitalOut hangpto('D');
 
 pros::Rotation arm_control(19);
 pros::Distance distance(8);
-pros::Distance top_distance(16);
+pros::Distance intake_distance(16);
 pros::Distance mogo_distance(15);
 pros::Optical ring_color(1);
 pros::Rotation intake_control(20);

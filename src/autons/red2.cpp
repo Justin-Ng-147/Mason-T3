@@ -48,7 +48,7 @@ void red2(){
     chassis.moveToPoint(30,15,2000,{.minSpeed=5,.earlyExitRange=3});
     pros::Task skills_task2{[=]
     {
-        while(top_distance.get_distance()>100) pros::delay(10);
+        while(intake_distance.get_distance()>100) pros::delay(10);
         pros::delay(500);
         set_intake_speed(0);
     }};

@@ -56,9 +56,9 @@ void sort(int color_type)
         // printf("%f\n",ring_color.get_rgb().red-ring_color.get_rgb().blue);
         // if(ring_color.get_rgb().red-ring_color.get_rgb().blue > 100 ) color = true;
         if(color_type==1)
-          if((ring_color.get_hue()>330 || ring_color.get_hue()<30) && top_distance.get_distance()<30) color = true;
+          if((ring_color.get_hue()>330 || ring_color.get_hue()<30) && intake_distance.get_distance()<30) color = true;
         if(color_type==2)
-          if((ring_color.get_hue()>210 && ring_color.get_hue()<270) && top_distance.get_distance()<30) color = true;
+          if((ring_color.get_hue()>210 && ring_color.get_hue()<270) && intake_distance.get_distance()<30) color = true;
         if(color){
           int prev_intake_speed = intake_speed;
           // pros::delay(10);
