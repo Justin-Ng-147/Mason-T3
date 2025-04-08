@@ -6,7 +6,7 @@ pros::MotorGroup right({RIGHTMOTOR1PORT,-RIGHTMOTOR2PORT,-RIGHTMOTOR3PORT},pros:
 
 pros::Imu imu(IMUPORT);
 pros::Rotation vertical_enc(-VERTICALENCODERPORT);
-pros::Rotation horizontal_enc(-HORIZONTALENCODERPORT);
+pros::Rotation horizontal_enc(HORIZONTALENCODERPORT);
 
 lemlib::Drivetrain drivetrain(&left, 
                               &right,
@@ -15,8 +15,8 @@ lemlib::Drivetrain drivetrain(&left,
                               450, //rpm
                               2); //horizontal drift
 
-lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_enc,lemlib::Omniwheel::NEW_2, -1.875); //3.625 3.25 2.75
-lemlib::TrackingWheel vertical_tracking_wheel(&vertical_enc,lemlib::Omniwheel::NEW_2, -.53125);
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_enc,lemlib::Omniwheel::NEW_2, -1.875);
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_enc,lemlib::Omniwheel::NEW_2, -.25); //-.53125
 
 lemlib::OdomSensors sensors(&vertical_tracking_wheel,nullptr,&horizontal_tracking_wheel,nullptr,&imu);
 
@@ -31,9 +31,9 @@ lemlib::ControllerSettings lateral_controller(10, // proportional gain (kP)
                                               0 // maximum acceleration (slew)
 );
 
-lemlib::ControllerSettings angular_controller(5.3, // proportional gain (kP)
+lemlib::ControllerSettings angular_controller(6, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              53, // derivative gain (kD)
+                                              60, // derivative gain (kD)
                                               3, // anti windup
                                               1, // small error range, in degrees
                                               100, // small error range timeout, in milliseconds
