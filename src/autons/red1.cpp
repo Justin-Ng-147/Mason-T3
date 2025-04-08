@@ -46,12 +46,12 @@ void red1(){
     //touch bar
     chassis.turnToPoint(10,11,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(10,11,2000,{.minSpeed=5,.earlyExitRange=3});
-    pros::Task skills_task2{[=]
-    {
-        while(intake_distance.get_distance()>50) pros::delay(10);
-        pros::delay(500);
-        set_intake_speed(0);
-    }};
+    // pros::Task skills_task2{[=]
+    // {
+    //     while(intake_distance.get_distance()>50) pros::delay(10);
+    //     pros::delay(500);
+    //     set_intake_speed(0);
+    // }};
     //touch bar
     chassis.turnToHeading(0,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveDistance(40,1000,{.maxSpeed=40});
