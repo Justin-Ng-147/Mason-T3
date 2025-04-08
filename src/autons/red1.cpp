@@ -12,7 +12,7 @@ void red1(){
 
     //score ring
     // chassis.turnToHeading(138,1000);
-    chassis.moveDistance(6.5,1000);
+    chassis.moveDistance(5,1000);
     arm.move(127);
     pros::delay(800);
     arm.brake();
@@ -30,12 +30,12 @@ void red1(){
     set_intake_speed(127,false);
     chassis.turnToPoint(-26.5,45,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,45,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-50,45,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-50,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-55,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-55,45,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 30,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-36,21,1000,{.minSpeed=20,.earlyExitRange=3});
-    fast_move(-36,21,2000,true);
+    chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
+    fast_move(-36,26,2000,true);
     
     // chassis.turnToPoint(-51,-10,1000);
     // set_intake_speed(127,false);
