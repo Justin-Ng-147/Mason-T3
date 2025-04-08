@@ -27,10 +27,10 @@ void red2(){
 
     //get 2 rings
     set_intake_speed(127);
-    chassis.turnToPoint(-26.5,44,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(-26.5,44,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-48,44,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-48,44,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
@@ -43,15 +43,37 @@ void red2(){
     // chassis.moveDistance(20,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3},false);
 
     //touch bar
-    chassis.turnToPoint(11,11,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.turnToPoint(20,10,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(20,10,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.waitUntil(25);
+    mogo.set_value(true);
     pros::Task skills_task2{[=]
     {
         while(intake_distance.get_distance()>50) pros::delay(10);
         set_intake_speed(0);
     }};
-    //touch bar
+
+    //get new mogo
+    chassis.turnToPoint(37,28,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(37,28,4000,{.forwards = false,.maxSpeed=80});
+    while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
+    pros::delay(50);
+    mogo.set_value(false);
+    chassis.cancelMotion();
+    left.brake();
+    right.brake();
+    pros::delay(100);
+    set_intake_speed(127);
     
+    chassis.turnToPoint(59,28,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(59,28,2000,{.minSpeed=5,.earlyExitRange=3});
+
+    global_target = 15000;
+    chassis.turnToPoint(30,35,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(30,35,2000,{.minSpeed=5,.earlyExitRange=3});
+    arm_move = true;
+    arm.move(0);
+
 
 }
 

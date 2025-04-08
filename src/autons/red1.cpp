@@ -28,10 +28,10 @@ void red1(){
 
     //get 2 rings
     set_intake_speed(127);
-    chassis.turnToPoint(-26.5,44,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(-26.5,44,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-48,44,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-48,44,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
