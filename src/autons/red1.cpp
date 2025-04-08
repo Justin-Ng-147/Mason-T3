@@ -27,13 +27,13 @@ void red1(){
     mogo.set_value(false);
 
     //get 2 rings
-    set_intake_speed(127,false);
+    set_intake_speed(127);
     chassis.turnToPoint(-26.5,44,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,44,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-50,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-50,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-48,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-48,43.5,1000,{.minSpeed=20,.earlyExitRange=3});
 
-    chassis.moveToPoint(-14, 34,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-14, 36,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
     fast_move(-36,26,2000,true);
     
@@ -44,8 +44,8 @@ void red1(){
     // chassis.moveDistance(20,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3},false);
 
     //touch bar
-    chassis.turnToPoint(10,11,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(10,11,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.turnToPoint(11,11,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
     // pros::Task skills_task2{[=]
     // {
     //     while(intake_distance.get_distance()>50) pros::delay(10);
