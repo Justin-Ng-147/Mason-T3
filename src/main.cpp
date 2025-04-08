@@ -28,7 +28,7 @@ void initialize() {
 	chassis.calibrate();
     pros::delay(100);
     // chassis.setPose(0,0,146);
-	chassis.setPose(0,0,0);
+	chassis.setPose(0,0,143.5);
 	// chassis.setPose(0,0,-12);
 
 	arm_to_pos();
@@ -121,6 +121,12 @@ void autonomous() {
  */
 void opcontrol() {
 	// intake_task->remove();
+	// chassis.turnToHeading(0,5000);
+	// chassis.turnToHeading(90,5000);
+	// chassis.turnToHeading(180,5000);
+	// chassis.turnToHeading(270,5000);
+	// chassis.turnToHeading(0,5000);
+	// return;
 	
 	arm.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	left.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
@@ -140,6 +146,9 @@ void opcontrol() {
 	bool y_pressed = true;
 	bool arm_pressed = true;
 
+	bool hanging = false;
+	bool forward = false;
+
 	while (true) {
 		#pragma region arcade
 		// Arcade control scheme
@@ -148,6 +157,8 @@ void opcontrol() {
 		left.move(dir+turn);
 		right.move(dir-turn);
 		#pragma endregion arcade
+
+		if(dir <-120) forward=false;
 
 		#pragma region arm
 		if(master.get_digital(DIGITAL_L1)){
@@ -199,7 +210,7 @@ void opcontrol() {
 			arm_move=false;
 			
 
-			global_target=3200;
+			global_target=2500;
 		}
 		else if(master.get_digital(DIGITAL_Y) != 1 && y_pressed){
 			y_pressed = false;
@@ -216,19 +227,22 @@ void opcontrol() {
 			arm.move(0);
 		}
 		#pragma endregion arm
-
+		
 		#pragma region intake r1
 		if(master.get_digital(DIGITAL_R1)){
 			// intake.move(127);
 			set_intake_speed(127,false);
+			if (hanging) forward = false;
 		}
 		else if(master.get_digital(DIGITAL_R2)){
 			// intake.move(-127);
 			set_intake_speed(-127,false);
+			if (hanging) forward = true;
 		}
 		else{
 			// intake.move(0);
-			set_intake_speed(0,false);
+			if(forward && hanging) set_intake_speed(-50,false);
+			else set_intake_speed(0,false);
 		}
 		#pragma endregion intake r1
 
@@ -245,6 +259,8 @@ void opcontrol() {
 
 		#pragma region hang
 		if(master.get_digital(DIGITAL_UP) && !twopto_pressed){
+			// intake.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+			hanging = true;
 			twopto_flag = !twopto_flag;
 			twopto.set_value(twopto_flag);
 			twopto_pressed = true;
