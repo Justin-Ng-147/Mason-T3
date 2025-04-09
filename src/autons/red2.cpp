@@ -28,12 +28,12 @@ void red2(){
     set_intake_speed(127);
     chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-47,45,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
-    fast_move(-36,26,2000,true);
+    chassis.turnToPoint(-36,28,1000,{.minSpeed=20,.earlyExitRange=3});
+    fast_move(-36,28,2000,true);
 
     //touch bar
     chassis.turnToPoint(20,10,1000,{.minSpeed=5,.earlyExitRange=3});
