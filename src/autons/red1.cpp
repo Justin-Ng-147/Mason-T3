@@ -11,7 +11,6 @@ void red1(){
     mogo.set_value(true);
 
     //score ring
-    // chassis.turnToHeading(138,1000);
     chassis.moveDistance(5,1000);
     arm.move(127);
     pros::delay(800);
@@ -36,22 +35,10 @@ void red1(){
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,26,1000,{.minSpeed=20,.earlyExitRange=3});
     fast_move(-36,26,2000,true);
-    
-    // chassis.turnToPoint(-51,-10,1000);
-    // set_intake_speed(127,false);
-    // chassis.moveDistance(40,2000);
-    // chassis.moveDistance(40,1000);
-    // chassis.moveDistance(20,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3},false);
 
     //touch bar
     chassis.turnToPoint(11,11,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
-    // pros::Task skills_task2{[=]
-    // {
-    //     while(intake_distance.get_distance()>50) pros::delay(10);
-    //     pros::delay(500);
-    //     set_intake_speed(0);
-    // }};
     //touch bar
     chassis.turnToHeading(0,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveDistance(40,1000,{.maxSpeed=40});
