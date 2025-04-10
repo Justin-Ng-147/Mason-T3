@@ -1,61 +1,120 @@
 #include "main.h"
 
-//new bot red - finals 6 ring
+// t3 bot goal rush
 void red3(){
-    // setup
-    chassis.setPose(0,0,146);
+    //setup
+    chassis.setPose(0,0,22);
     intake.set_encoder_units_all(MOTOR_ENCODER_ROTATIONS);
     left.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
     right.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
     mogo.set_value(true);
+    swiper.set_value(true);
 
-    // get mogo
-    chassis.moveToPoint(-17, 34,4000,{.forwards = false,.maxSpeed=80});
-    pros::delay(500);
-    arm_move=false;
-    global_target=100;
+    chassis.moveDistance(40,1000,{.minSpeed=5,.earlyExitRange=3});
+    set_intake_speed(127);
+    pros::Task skills_task1{[=]
+    {
+        while(intake_distance.get_distance()>50) pros::delay(10);
+        set_intake_speed(0);
+    }};
+    // chassis.waitUntil(35);
+    // chassis.cancelAllMotions();
+    chassis.moveDistance(20,5000,{.forwards=false},false);
+    swiper.set_value(false);
+
+    chassis.turnToPoint(-9,47,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(-9,47,4000,{.forwards = false,.maxSpeed=80});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
     mogo.set_value(false);
-
-    //get 2 rings
+    chassis.cancelMotion();
+    left.brake();
+    right.brake();
+    pros::delay(100);
     set_intake_speed(127);
-    chassis.turnToPoint(-34,42.5,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(-34,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-48,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-48,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
 
-    chassis.moveToPoint(-14, 31,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-36,27,1000,{.minSpeed=20,.earlyExitRange=3});
-    fast_move(-36,27,2000,true);
+    chassis.moveToPoint(-28,22,2000);
 
-    chassis.turnToPoint(-51,-10,1000);
-    chassis.moveDistance(40,2000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveDistance(40,700);
-    chassis.moveDistance(10,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    // -7 12
+    chassis.turnToPoint(-7,12,1000,{},false);
+    mogo.set_value(true);
+    chassis.moveToPoint(-7,12,2000);
 
+    chassis.turnToPoint(22,30,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(22,30,4000,{.forwards = false,.maxSpeed=80});
+    while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
+    pros::delay(50);
+    mogo.set_value(false);
+    chassis.cancelMotion();
+    left.brake();
+    right.brake();
+    pros::delay(100);
+    // set_intake_speed(127);
 
-
-    chassis.turnToPoint(30,15,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(30,15,2000,{.minSpeed=5,.earlyExitRange=3});
-    pros::Task skills_task2{[=]
-    {
-        while(intake_distance.get_distance()>100) pros::delay(10);
-        pros::delay(500);
-        set_intake_speed(0);
-    }};
-
-
-    //go to corner
-    // chassis.moveToPoint(60,-5,2000);
-    chassis.moveToPoint(72,-13,2000);
+    // -2.5 11.5
+    // 155
+    chassis.moveToPoint(-2.5,11.5,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.swingToHeading(155,lemlib::DriveSide::LEFT,1000);
     swiper.set_value(true);
-    chassis.turnToHeading(-40,1000,{},false);
-    set_intake_speed(0);
-    // mogo.set_value(true);
-    swiper.set_value(false);
-    // set_intake_speed(-127);
+    chassis.moveDistance(10,1000);
 }
+
+//new bot red - finals 6 ring
+// void red3(){
+//     // setup
+//     chassis.setPose(0,0,146);
+//     intake.set_encoder_units_all(MOTOR_ENCODER_ROTATIONS);
+//     left.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
+//     right.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
+//     mogo.set_value(true);
+
+//     // get mogo
+//     chassis.moveToPoint(-17, 34,4000,{.forwards = false,.maxSpeed=80});
+//     pros::delay(500);
+//     arm_move=false;
+//     global_target=100;
+//     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
+//     pros::delay(50);
+//     mogo.set_value(false);
+
+//     //get 2 rings
+//     set_intake_speed(127);
+//     chassis.turnToPoint(-34,42.5,1000,{.minSpeed=5,.earlyExitRange=3});
+//     chassis.moveToPoint(-34,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
+//     chassis.turnToPoint(-48,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
+//     chassis.moveToPoint(-48,42.5,1000,{.minSpeed=20,.earlyExitRange=3});
+
+//     chassis.moveToPoint(-14, 31,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
+//     chassis.turnToPoint(-36,27,1000,{.minSpeed=20,.earlyExitRange=3});
+//     fast_move(-36,27,2000,true);
+
+//     chassis.turnToPoint(-51,-10,1000);
+//     chassis.moveDistance(40,2000,{.minSpeed=5,.earlyExitRange=3});
+//     chassis.moveDistance(40,700);
+//     chassis.moveDistance(10,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+
+
+
+//     chassis.turnToPoint(30,15,1000,{.minSpeed=5,.earlyExitRange=3});
+//     chassis.moveToPoint(30,15,2000,{.minSpeed=5,.earlyExitRange=3});
+//     pros::Task skills_task2{[=]
+//     {
+//         while(intake_distance.get_distance()>100) pros::delay(10);
+//         pros::delay(500);
+//         set_intake_speed(0);
+//     }};
+
+
+//     //go to corner
+//     // chassis.moveToPoint(60,-5,2000);
+//     chassis.moveToPoint(72,-13,2000);
+//     swiper.set_value(true);
+//     chassis.turnToHeading(-40,1000,{},false);
+//     set_intake_speed(0);
+//     // mogo.set_value(true);
+//     swiper.set_value(false);
+//     // set_intake_speed(-127);
+// }
 
 
 //red final - side

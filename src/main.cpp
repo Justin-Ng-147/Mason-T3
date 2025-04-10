@@ -10,7 +10,7 @@ false: display competition screen to choose different autons
 bool testing = true;
 
 int auton_status = 0;
-int test_auton = 2;
+int test_auton = 3;
 
 
 
@@ -28,7 +28,7 @@ void initialize() {
 	chassis.calibrate();
     pros::delay(100);
     // chassis.setPose(0,0,146);
-	chassis.setPose(0,0,143.5);
+	chassis.setPose(0,0,0);
 	// chassis.setPose(0,0,-12);
 
 	arm_to_pos();
@@ -141,6 +141,9 @@ void opcontrol() {
 	
 	bool hang_flag = true;
 	bool hang_pressed = true;
+
+	bool swiper_flag = false;
+	bool swiper_pressed = true;
 
 	bool b_pressed = true;
 	bool y_pressed = true;
@@ -256,6 +259,17 @@ void opcontrol() {
 			mogo_pressed = false;
 		}
 		#pragma endregion mogo down
+
+		#pragma region swiper a
+		if(master.get_digital(DIGITAL_A) && !swiper_pressed){
+			swiper_flag = !swiper_flag;
+			swiper.set_value(swiper_flag);
+			swiper_pressed = true;
+		}
+		else if(master.get_digital(DIGITAL_A) != 1 && swiper_pressed){
+			swiper_pressed = false;
+		}
+		#pragma endregion swiper a
 
 		#pragma region hang
 		if(master.get_digital(DIGITAL_UP) && !twopto_pressed){
