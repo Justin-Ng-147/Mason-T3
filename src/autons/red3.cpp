@@ -3,14 +3,14 @@
 // t3 bot goal rush
 void red3(){
     //setup
-    chassis.setPose(0,0,22);
+    chassis.setPose(0,0,0);
     intake.set_encoder_units_all(MOTOR_ENCODER_ROTATIONS);
     left.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
     right.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);
     mogo.set_value(true);
     swiper.set_value(true);
 
-    chassis.moveDistance(40,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(0, 38, 2000, {.minSpeed=5,.earlyExitRange=3});
     set_intake_speed(127);
     pros::Task skills_task1{[=]
     {
@@ -19,11 +19,12 @@ void red3(){
     }};
     // chassis.waitUntil(35);
     // chassis.cancelAllMotions();
-    chassis.moveDistance(20,5000,{.forwards=false},false);
+    chassis.moveToPoint(0,20, 2000, {.forwards=false, .maxSpeed=50},false);
     swiper.set_value(false);
+    
 
-    chassis.turnToPoint(-9,47,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(-9,47,4000,{.forwards = false,.maxSpeed=80});
+    chassis.turnToPoint(-22,37.5,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(-22,37.5,4000,{.forwards = false,.maxSpeed=80});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
     mogo.set_value(false);
@@ -31,32 +32,40 @@ void red3(){
     left.brake();
     right.brake();
     pros::delay(100);
-    set_intake_speed(127);
+    
 
-    chassis.moveToPoint(-28,22,2000);
+    
+    chassis.turnToPoint(-26, 6 ,2000, {.forwards=false, .minSpeed=5,.earlyExitRange=3},false);
+    set_intake_speed(127);
+    chassis.moveToPoint(-26, 6 ,2000, {.forwards=false},false);
+    mogo.set_value(true);
 
     // -7 12
-    chassis.turnToPoint(-7,12,1000,{},false);
-    mogo.set_value(true);
-    chassis.moveToPoint(-7,12,2000);
+    chassis.turnToPoint(-12,9,1000,{.minSpeed=5,.earlyExitRange=3});
+    
+    chassis.moveToPoint(-12,9,2000,{.minSpeed=5,.earlyExitRange=3});
 
-    chassis.turnToPoint(22,30,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(22,30,4000,{.forwards = false,.maxSpeed=80});
+    chassis.turnToPoint(8,36,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(8,36,4000,{.forwards = false});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
     mogo.set_value(false);
     chassis.cancelMotion();
+    
     left.brake();
     right.brake();
     pros::delay(100);
+    
     // set_intake_speed(127);
 
-    // -2.5 11.5
-    // 155
-    chassis.moveToPoint(-2.5,11.5,2000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.swingToHeading(155,lemlib::DriveSide::LEFT,1000);
+    chassis.moveToPoint(-14,2.6,2000,{}, false);
+    chassis.turnToHeading(128.6,1000,{.minSpeed=5,.earlyExitRange=3});
     swiper.set_value(true);
-    chassis.moveDistance(10,1000);
+    set_intake_speed(127);
+    chassis.moveToPoint(-3,-7,2000,{}, false);
+    chassis.turnToHeading(37,1000,{.minSpeed=5,.earlyExitRange=3});
+
+
 }
 
 //new bot red - finals 6 ring
