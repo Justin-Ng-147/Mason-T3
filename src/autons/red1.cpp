@@ -41,9 +41,9 @@ void red1(){
     chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
 
     //get middle ring
-    chassis.moveToPoint(0,19,2000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
-    chassis.turnToPoint(1,38,1000,{.minSpeed=5, .earlyExitRange=3});
-    chassis.moveToPoint(1,38,2000,{},false);
+    chassis.moveToPoint(0,19,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.turnToPoint(0,41,1000,{.minSpeed=5, .earlyExitRange=3});
+    chassis.moveToPoint(0,41,2000,{},false);
     swiper.set_value(true);
 
     return;
