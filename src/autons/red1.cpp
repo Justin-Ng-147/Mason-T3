@@ -29,7 +29,7 @@ void red1(){
     set_intake_speed(127);
     chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-47,46,500,{.minSpeed=20,.earlyExitRange=3});
     chassis.moveToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
@@ -39,6 +39,16 @@ void red1(){
     //touch bar
     chassis.turnToPoint(11,11,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
+
+    //get middle ring
+    chassis.moveToPoint(0,19,2000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.turnToPoint(1,38,1000,{.minSpeed=5, .earlyExitRange=3});
+    chassis.moveToPoint(1,38,2000,{},false);
+    swiper.set_value(true);
+
+    return;
+
+
     //touch bar
     chassis.turnToHeading(0,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveDistance(40,1000,{.maxSpeed=40});
