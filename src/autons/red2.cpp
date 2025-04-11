@@ -28,7 +28,7 @@ void red2(){
     set_intake_speed(127);
     chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-47,46,500,{.minSpeed=20,.earlyExitRange=3});
     chassis.moveToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
