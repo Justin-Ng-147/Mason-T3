@@ -9,7 +9,7 @@ void blue1(){
     mogo.set_value(true);
 
     //score ring
-    chassis.moveDistance(5,1000);
+    chassis.moveDistance(4.5,1000);
     arm.move(127);
     pros::delay(800);
     arm.brake();
@@ -25,16 +25,28 @@ void blue1(){
 
     //get 2 rings
     set_intake_speed(127);
-    chassis.turnToPoint(30,41,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(30,41,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(49,42,500,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(49,42,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(30,42,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(30,42,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(49,43,500,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(49,43,1000,{.minSpeed=20,.earlyExitRange=3});
 
-    chassis.moveToPoint(16, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(38,30,1000,{.minSpeed=20,.earlyExitRange=3});
-    fast_move(38,30,2000,true);
+    chassis.moveToPoint(16,38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(40,28,1000,{.minSpeed=20,.earlyExitRange=3});
+    fast_move(40,28,2000,true);
 
-    
+    chassis.moveToPoint(12,33,1000,{.forwards=false});
+    chassis.turnToPoint(0,43,1000);
+    set_intake_speed(0);
+    chassis.moveToPoint(0,43,1000,{},false);
+    swiper.set_value(true);
+
+    chassis.moveToPoint(40,28,2000,{.forwards=false,.minSpeed=5,.earlyExitRange=3},false);
+    chassis.turnToHeading(chassis.getPose().theta + 10,1000,{.minSpeed=20,.earlyExitRange=3});
+    set_intake_speed(127);
+    chassis.moveDistance(15,1000);
+
+
+
 
     return;
     //touch bar
