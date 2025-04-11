@@ -34,6 +34,8 @@ void blue1(){
     chassis.turnToPoint(38,30,1000,{.minSpeed=20,.earlyExitRange=3});
     fast_move(38,30,2000,true);
 
+    
+
     return;
     //touch bar
     chassis.turnToPoint(-11,11,1000,{.minSpeed=5,.earlyExitRange=3});
