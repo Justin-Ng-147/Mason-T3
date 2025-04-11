@@ -24,26 +24,39 @@ void blue1(){
     mogo.set_value(false);
 
     //get 2 rings
-    set_intake_speed(127);
+    set_intake_speed(127,false);
     chassis.turnToPoint(30,42,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(30,42,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(49,43,500,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(49,43,1000,{.minSpeed=20,.earlyExitRange=3});
+    // chassis.turnToPoint(49,43.5,500,{.minSpeed=20,.earlyExitRange=3},false);
+    chassis.turnToPoint(49,43.5,1000,{},false);
+    pros::delay(200);
+    chassis.moveToPoint(49,43.5,5000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(16,38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(40,28,1000,{.minSpeed=20,.earlyExitRange=3});
     fast_move(40,28,2000,true);
 
-    chassis.moveToPoint(12,33,1000,{.forwards=false});
-    chassis.turnToPoint(0,43,1000);
+    chassis.turnToPoint(12,33,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(12,33,2000,{.forwards=false});
+    // chassis.turnToPoint(3,43.5,1000);
+    chassis.turnToHeading(-410,2000);
     set_intake_speed(0);
-    chassis.moveToPoint(0,43,1000,{},false);
+    chassis.moveDistance(12,1000,{},false);
+    // chassis.moveToPoint(3,43.5,1000,{},false);
     swiper.set_value(true);
+    pros::delay(500);
 
-    chassis.moveToPoint(40,28,2000,{.forwards=false,.minSpeed=5,.earlyExitRange=3},false);
-    chassis.turnToHeading(chassis.getPose().theta + 10,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveDistance(30,3000,{.forwards=false,.maxSpeed=60,.minSpeed=5,.earlyExitRange=3});
+    global_target = 15000;
+    chassis.turnToHeading(chassis.getPose().theta + 25,1000,{.minSpeed=20,.earlyExitRange=3});
     set_intake_speed(127);
+    swiper.set_value(false);
+    // chassis.moveToPoint(14,32,1000,{},false);
     chassis.moveDistance(15,1000);
+    // return;
+    
+    arm_move = true;
+    arm.move(0);
 
 
 
