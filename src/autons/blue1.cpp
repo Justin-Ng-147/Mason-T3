@@ -29,7 +29,7 @@ void blue1(){
     chassis.moveToPoint(30,42,1000,{.minSpeed=20,.earlyExitRange=3});
     // chassis.turnToPoint(49,43.5,500,{.minSpeed=20,.earlyExitRange=3},false);
     chassis.turnToPoint(49,43.5,1000,{},false);
-    pros::delay(200);
+    // pros::delay(200);
     chassis.moveToPoint(49,43.5,5000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(16,38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
@@ -39,11 +39,13 @@ void blue1(){
     chassis.turnToPoint(12,33,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(12,33,2000,{.forwards=false});
     // chassis.turnToPoint(3,43.5,1000);
-    chassis.turnToHeading(-410,2000);
+    chassis.turnToHeading(-408,2000);
     set_intake_speed(0);
-    chassis.moveDistance(12,1000,{},false);
-    // chassis.moveToPoint(3,43.5,1000,{},false);
+    chassis.moveDistance(15,1000,{.minSpeed=5,.earlyExitRange=3},false);
     swiper.set_value(true);
+    left.brake();
+    right.brake();
+    // chassis.moveToPoint(3,43.5,1000,{},false);
     pros::delay(500);
 
     chassis.moveDistance(30,3000,{.forwards=false,.maxSpeed=60,.minSpeed=5,.earlyExitRange=3});
@@ -52,7 +54,7 @@ void blue1(){
     set_intake_speed(127);
     swiper.set_value(false);
     // chassis.moveToPoint(14,32,1000,{},false);
-    chassis.moveDistance(15,1000);
+    chassis.moveDistance(17,1000);
     // return;
     
     arm_move = true;
