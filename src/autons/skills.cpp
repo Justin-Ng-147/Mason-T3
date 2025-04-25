@@ -122,21 +122,21 @@ void skills(){
     global_target=2000;
     //mogo 2 get ring 2 move to ring
     set_intake_speed(127,false);
-    fast_move(53,91,1000,true);
+    fast_move(62,85,1000,true);
 
     //mogo 2 task that when the ring is on the arm lift the arm up out of the way of other intaked rings
-    // pros::Task skills_task2{[=]
-    // {
-    //     while(top_distance.get_distance()>100) pros::delay(10);
-    //     pros::delay(800);
-    //     global_target=7000;
-    //     set_intake_speed(-25);
-    //     pros::delay(500);
-    //     set_intake_speed(127);
-    // }};
+    pros::Task skills_task2{[=]
+    {
+        while(intake_distance.get_distance()>100) pros::delay(10);
+        pros::delay(800);
+        global_target=7000;
+        set_intake_speed(-25);
+        pros::delay(500);
+        set_intake_speed(127);
+    }};
     
     //mogo 2 move to stake
-    chassis.moveToPoint(59,58,2000,{},false);
+    chassis.moveToPoint(59,61,2000,{},false);
     chassis.turnToHeading(90,1000);
     chassis.moveDistance(60,2000,{.maxSpeed = 60});
     chassis.waitUntil(12);
@@ -159,12 +159,12 @@ void skills(){
 
     //mogo 2 get 3 rings in a line
     set_intake_speed(127);
-    chassis.turnToPoint(54,5,1000,{.minSpeed=3,.earlyExitRange=5});
-    chassis.moveToPoint(54,5,2000,{.minSpeed=60,.earlyExitRange=20});
-    chassis.moveToPoint(54,5,2000,{.maxSpeed=40},false);
+    chassis.turnToPoint(64,4,1000,{.minSpeed=3,.earlyExitRange=5});
+    chassis.moveToPoint(64,4,2000,{.minSpeed=60,.earlyExitRange=20});
+    chassis.moveToPoint(64,4,2000,{.maxSpeed=40},false);
     
     //mogo 2 get last ring and set up to drop off mogo
-    chassis.moveToPoint(65,20,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(76,12,2000,{.minSpeed=5,.earlyExitRange=3});
     chassis.turnToHeading(-10,1000,{.minSpeed=5,.earlyExitRange=3});
 
     //mogo 2 score mogo
@@ -176,6 +176,7 @@ void skills(){
     chassis.moveDistance(5,1000,{.minSpeed=5,.earlyExitRange=3});
     global_target=100;
 
+    return;
     //mogo 3 go through center and get ring 1 & 2
     chassis.turnToPoint(-15,89,1000);
     chassis.moveToPoint(-15,89,4000);
