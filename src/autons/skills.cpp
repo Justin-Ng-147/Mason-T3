@@ -1,4 +1,5 @@
 #include "main.h"
+#include "ringSort.hpp"
 #include "robot.hpp"
 
 void skills(){
@@ -37,7 +38,7 @@ void skills(){
     fast_move(-31,56,1000,true);
     //mogo 1 move arm to load ring
     arm_move=false;
-    global_target=2000;
+    global_target=1800;
     //mogo 1 get ring 2 move to ring
     set_intake_speed(127,false);
     fast_move(-36,85,2000,true);
@@ -46,7 +47,7 @@ void skills(){
     pros::Task skills_task1{[=]
     {
         while(intake_distance.get_distance()>50) pros::delay(10);
-        pros::delay(800);
+        pros::delay(1000);
         global_target=7000;
         set_intake_speed(-25);
         pros::delay(500);
@@ -81,7 +82,7 @@ void skills(){
     chassis.moveToPoint(-36,0,2000,{.maxSpeed=30},false);
 
     //mogo 1 get last ring and set up to drop off mogo
-    chassis.moveToPoint(-45,8,2000,{.minSpeed=5,.earlyExitRange=3},false);
+    chassis.moveToPoint(-48,14,2000,{.minSpeed=5,.earlyExitRange=3},false);
     chassis.turnToHeading(12,1000,{.minSpeed=5,.earlyExitRange=3});
     
 
@@ -92,19 +93,20 @@ void skills(){
     pros::delay(200);
     set_intake_speed(0);
     //mogo 1 move away from corner
-    chassis.moveDistance(12,1000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveDistance(14,1000,{.minSpeed=5,.earlyExitRange=3});
 
     global_target =100;
 
     //get new mogo 2                             
-    chassis.turnToPoint(45,11,1000,{.forwards=false});
+    chassis.turnToPoint(45,10,1000,{.forwards=false});
     // global_target=3200;
-    chassis.moveToPoint(45,11,4000,{.forwards=false,.minSpeed=5,.earlyExitRange=40});
-    chassis.moveToPoint(45,11,3200,{.forwards=false,.maxSpeed=70});
+    chassis.moveToPoint(45,10,4000,{.forwards=false,.minSpeed=5,.earlyExitRange=40});
+    chassis.moveToPoint(45,10,3200,{.forwards=false,.maxSpeed=70});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
     mogo.set_value(false);
     chassis.cancelMotion();
+    set_intake_speed(127);
 
     // skills_task50.notify();
 
@@ -119,7 +121,7 @@ void skills(){
     fast_move(59,58,1000,true);
     //mogo 2 move arm to load ring
     arm_move=false;
-    global_target=2000;
+    global_target=1800;
     //mogo 2 get ring 2 move to ring
     set_intake_speed(127,false);
     fast_move(62,85,1000,true);
@@ -128,7 +130,7 @@ void skills(){
     pros::Task skills_task2{[=]
     {
         while(intake_distance.get_distance()>100) pros::delay(10);
-        pros::delay(800);
+        pros::delay(1000);
         global_target=7000;
         set_intake_speed(-25);
         pros::delay(500);
@@ -136,7 +138,7 @@ void skills(){
     }};
     
     //mogo 2 move to stake
-    chassis.moveToPoint(59,61,2000,{},false);
+    chassis.moveToPoint(59,58,2000,{.forwards=false},false);
     chassis.turnToHeading(90,1000);
     chassis.moveDistance(60,2000,{.maxSpeed = 60});
     chassis.waitUntil(12);
@@ -159,12 +161,12 @@ void skills(){
 
     //mogo 2 get 3 rings in a line
     set_intake_speed(127);
-    chassis.turnToPoint(64,4,1000,{.minSpeed=3,.earlyExitRange=5});
-    chassis.moveToPoint(64,4,2000,{.minSpeed=60,.earlyExitRange=20});
-    chassis.moveToPoint(64,4,2000,{.maxSpeed=40},false);
+    chassis.turnToPoint(61,0,1000,{.minSpeed=3,.earlyExitRange=5});
+    chassis.moveToPoint(61,0,2000,{.minSpeed=60,.earlyExitRange=20});
+    chassis.moveToPoint(61,0,2000,{.maxSpeed=40},false);
     
     //mogo 2 get last ring and set up to drop off mogo
-    chassis.moveToPoint(76,12,2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(72,14,2000,{.minSpeed=5,.earlyExitRange=3});
     chassis.turnToHeading(-10,1000,{.minSpeed=5,.earlyExitRange=3});
 
     //mogo 2 score mogo
@@ -190,7 +192,7 @@ void skills(){
     // chassis.moveDistance(8,1000);
     chassis.waitUntilDone();
     //put ring in arm
-    global_target=3200;
+    global_target=1800;
     set_intake_speed(127,false);
     while(intake_distance.get_distance()>100) pros::delay(10);
     pros::delay(800);
