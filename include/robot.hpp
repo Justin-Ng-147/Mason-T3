@@ -1,12 +1,14 @@
 #ifndef _ROBOT_HPP_
 #define _ROBOT_HPP_
 
+#include "pros/adi.hpp"
 extern pros::MotorGroup intake;
 extern pros::Motor arm;
 extern pros::ADIDigitalOut mogo;
 extern pros::ADIDigitalOut twopto;
 extern pros::ADIDigitalOut swiper;
 extern pros::ADIDigitalOut hangpto;
+extern pros::ADIDigitalOut balanceArm;
 
 extern pros::Rotation arm_control;
 extern pros::Distance distance;

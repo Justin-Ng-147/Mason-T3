@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/adi.hpp"
 
 
 pros::MotorGroup intake({-7,10});
@@ -7,6 +8,7 @@ pros::ADIDigitalOut mogo('A');
 pros::ADIDigitalOut twopto('B');
 pros::ADIDigitalOut swiper('C');
 pros::ADIDigitalOut hangpto('D');
+pros::ADIDigitalOut balanceArm('E');
 
 pros::Rotation arm_control(19);
 pros::Distance distance(8);

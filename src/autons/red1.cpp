@@ -29,8 +29,8 @@ void red1(){
     set_intake_speed(127);
     chassis.turnToPoint(-26.5,44.5,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(-26.5,44.5,1000,{.minSpeed=20,.earlyExitRange=3});
-    chassis.turnToPoint(-47,46,500,{.minSpeed=20,.earlyExitRange=3});
-    chassis.moveToPoint(-47,46,1000,{.minSpeed=20,.earlyExitRange=3});
+    chassis.turnToPoint(-45,46,500,{.minSpeed=20,.earlyExitRange=3});
+    chassis.moveToPoint(-45,46,1000,{.minSpeed=20,.earlyExitRange=3});
 
     chassis.moveToPoint(-14, 38,1000,{.forwards=false,.minSpeed=20,.earlyExitRange=3});
     chassis.turnToPoint(-36,28,1000,{.minSpeed=20,.earlyExitRange=3});
@@ -40,18 +40,30 @@ void red1(){
     chassis.turnToPoint(11,11,1000,{.minSpeed=5,.earlyExitRange=3});
     chassis.moveToPoint(11,11,2000,{.minSpeed=5,.earlyExitRange=3});
 
-    //get middle ring
-    chassis.moveToPoint(0,19,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
-    chassis.turnToPoint(0,41,1000,{.minSpeed=5, .earlyExitRange=3});
-    chassis.moveToPoint(0,41,2000,{},false);
-    swiper.set_value(true);
+    chassis.turnToPoint(-18.69, 14.45, 2000, {.forwards=false, .minSpeed=5, .earlyExitRange=3});
+    chassis.moveToPoint(-18.69, 14.45, 2000, {.forwards=false, .minSpeed=5, .earlyExitRange=3});
+
+    chassis.turnToPoint(-3, 32, 2000, {.minSpeed=5, .earlyExitRange=3}, false);
+    arm_move=false;
+    global_target=13500;
+    pros::delay(200);
+    arm_move=true;
+    arm.move(0);
+    chassis.moveToPoint(-3, 32, 2000, {.maxSpeed=80,.minSpeed=5, .earlyExitRange=3});
 
     return;
+    // //get middle ring
+    // chassis.moveToPoint(0,19,1000,{.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    // chassis.turnToPoint(0,41,1000,{.minSpeed=5, .earlyExitRange=3});
+    // chassis.moveToPoint(0,41,2000,{},false);
+    // swiper.set_value(true);
+
+    // return;
 
 
     //touch bar
     chassis.turnToHeading(0,1000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveDistance(40,1000,{.maxSpeed=40});
+    chassis.moveDistance(40,1000,{.maxSpeed=20});
 }
 
 //red finals code + for new bot
