@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 
 int convert_bit(int input){
     if(input & LCD_BTN_LEFT){
@@ -21,7 +22,7 @@ void chooser(int& status){
 
     while (true)
     {
-        if(master.get_digital(DIGITAL_UP)) break;
+        if(master.get_digital(DIGITAL_LEFT)) break;
         selected = convert_bit(pros::lcd::read_buttons());
         // printf("%d , %d\n",pros::lcd::read_buttons(),status);
         if(status == -7){

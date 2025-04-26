@@ -1,4 +1,6 @@
 #include "main.h"
+#include "pros/misc.h"
+#include "ringSort.hpp"
 
 
 
@@ -10,7 +12,7 @@ false: display competition screen to choose different autons
 bool testing = true;
 
 int auton_status = 0;
-int test_auton = 3;
+int test_auton = 8;
 
 
 
@@ -28,7 +30,7 @@ void initialize() {
 	chassis.calibrate();
     pros::delay(100);
     // chassis.setPose(0,0,146);
-	chassis.setPose(0,0,0);
+	chassis.setPose(0,0,131.5);
 	// chassis.setPose(0,0,-12);
 
 	arm_to_pos();
@@ -145,6 +147,9 @@ void opcontrol() {
 	bool swiper_flag = false;
 	bool swiper_pressed = true;
 
+	bool push_flag = false;
+	bool push_pressed = true;
+
 	bool b_pressed = true;
 	bool y_pressed = true;
 	bool arm_pressed = true;
@@ -213,7 +218,7 @@ void opcontrol() {
 			arm_move=false;
 			
 
-			global_target=2500;
+			global_target=1700;
 		}
 		else if(master.get_digital(DIGITAL_Y) != 1 && y_pressed){
 			y_pressed = false;
@@ -244,8 +249,7 @@ void opcontrol() {
 		}
 		else{
 			// intake.move(0);
-			if(forward && hanging) set_intake_speed(-50,false);
-			else set_intake_speed(0,false);
+			set_intake_speed(0);
 		}
 		#pragma endregion intake r1
 
@@ -261,12 +265,12 @@ void opcontrol() {
 		#pragma endregion mogo down
 
 		#pragma region swiper a
-		if(master.get_digital(DIGITAL_A) && !swiper_pressed){
+		if(master.get_digital(DIGITAL_RIGHT) && !swiper_pressed){
 			swiper_flag = !swiper_flag;
 			swiper.set_value(swiper_flag);
 			swiper_pressed = true;
 		}
-		else if(master.get_digital(DIGITAL_A) != 1 && swiper_pressed){
+		else if(master.get_digital(DIGITAL_RIGHT) != 1 && swiper_pressed){
 			swiper_pressed = false;
 		}
 		#pragma endregion swiper a
@@ -291,7 +295,18 @@ void opcontrol() {
 		else if(master.get_digital(DIGITAL_X) != 1 && hang_pressed){
 			hang_pressed = false;
 		}
+
+		if(master.get_digital(DIGITAL_A) && !push_pressed){
+			push_flag = !push_flag;
+			push.set_value(push_flag);
+			push_pressed = true;
+		}
+		else if(master.get_digital(DIGITAL_A) != 1 && push_pressed){
+			push_pressed = false;
+		}
 		#pragma endregion hang
+
+		
 
 		pros::delay(20);                               // Run for 20 ms then update
 	}
