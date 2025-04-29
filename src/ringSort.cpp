@@ -175,7 +175,7 @@ void arm_to_pos()
 {
   pros::Task arm_task_0{[=]
     {
-      lemlib::PID arm_pid(.07,0,.2);
+      lemlib::PID arm_pid(.01,0.0005,0.005,3000,true);
       arm_pid.reset();
       arm.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
       int target;
@@ -191,9 +191,9 @@ void arm_to_pos()
         target = global_target;
         pos = arm_control.get_position();
         error = target - pos;
-        if(prev_target!=target || arm_move){
+        if(prev_target!=target){
           count = 0;
-          prev_error = error;
+          // prev_error = error;
         }
         prev_target = target;
         // if(abs(error)<100) error = 0;
@@ -202,18 +202,18 @@ void arm_to_pos()
           speed = 127;
         if (speed < -127)
           speed = -127;
-        if(count < 1){
+        if(count < 50){
           if (!arm_move)
             arm.move(speed);
           // if(abs(error)<300)
-          if(error*prev_error<0)
+          if(abs(error)<300)
               count++;
         }
         else{
           if (!arm_move)
             arm.brake();
         }
-        prev_error = error;
+        // prev_error = error;
         pros::delay(10);
       }
     }};
