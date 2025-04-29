@@ -1,6 +1,6 @@
 #include "main.h"
 
-// t3 bot goal rush
+// t3 bot red + finals goal rush
 void red3(){
     //setup
     chassis.setPose(0,0,0);
