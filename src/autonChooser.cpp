@@ -25,48 +25,9 @@ void chooser(int& status){
         if(master.get_digital(DIGITAL_LEFT)) break;
         selected = convert_bit(pros::lcd::read_buttons());
         // printf("%d , %d\n",pros::lcd::read_buttons(),status);
-        if(status == -7){
+        if(status == -4){
             if(!set_text){
-                pros::lcd::set_text(1, "    blue + 3 goal   ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == -6){
-            if(!set_text){
-                pros::lcd::set_text(1, "    blue + finals without stake   ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == -5){
-            if(!set_text){
-                pros::lcd::set_text(1, "    blue + finals with stake   ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == -4){
-            if(!set_text){
-                pros::lcd::set_text(1, "    blue + teamwork   ");
+                pros::lcd::set_text(1, "    blue + goal rush   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -79,7 +40,7 @@ void chooser(int& status){
         }
         else if(status == -3){
             if(!set_text){
-                pros::lcd::set_text(1, "    blue - finals without stake   ");
+                pros::lcd::set_text(1, "    blue + alliance stake goal rush   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -92,7 +53,7 @@ void chooser(int& status){
         }
         else if(status == -2){
             if(!set_text){
-                pros::lcd::set_text(1, "    blue - finals with stake   ");
+                pros::lcd::set_text(1, "    blue - 3 goal   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -105,7 +66,7 @@ void chooser(int& status){
         }
         else if(status == -1){
             if(!set_text){
-                pros::lcd::set_text(1, "    blue - teamwork   ");
+                pros::lcd::set_text(1, "    blue - teamwork regular   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -130,7 +91,7 @@ void chooser(int& status){
         }
         else if(status == 1){
             if(!set_text){
-                pros::lcd::set_text(1, "    red - teamwork  ");
+                pros::lcd::set_text(1, "    red - teamwork regular  ");
                 set_text = true;
             }
             if(selected != 0){
@@ -143,7 +104,7 @@ void chooser(int& status){
         }
         else if(status == 2){
             if(!set_text){
-                pros::lcd::set_text(1, "    red - finals with stake   ");
+                pros::lcd::set_text(1, "    red - 3 goal   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -156,7 +117,7 @@ void chooser(int& status){
         }
         else if(status == 3){
             if(!set_text){
-                pros::lcd::set_text(1, "    red - finals without stake   ");
+                pros::lcd::set_text(1, "    red + alliance stake goal rush   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -169,7 +130,7 @@ void chooser(int& status){
         }
         else if(status == 4){
             if(!set_text){
-                pros::lcd::set_text(1, "    red + teamwork   ");
+                pros::lcd::set_text(1, "    red + goal rush   ");
                 set_text = true;
             }
             if(selected != 0){
@@ -181,45 +142,6 @@ void chooser(int& status){
             }
         }
         else if(status == 5){
-            if(!set_text){
-                pros::lcd::set_text(1, "    red + finals with stake ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == 6){
-            if(!set_text){
-                pros::lcd::set_text(1, "    red + finals without stake   ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == 7){
-            if(!set_text){
-                pros::lcd::set_text(1, "    red + 3 goal   ");
-                set_text = true;
-            }
-            if(selected != 0){
-                set_text=false;
-                if(selected == 100) return;
-                else status += selected;
-                pros::delay(500);
-                continue;
-            }
-        }
-        else if(status == 8){
             if(!set_text){
                 pros::lcd::set_text(1, "    skills   ");
                 set_text = true;
@@ -242,15 +164,6 @@ void chooser(int& status){
 void run_auton(int selected){
     switch (selected)
     {
-    case -7:
-        blue7();
-        break;
-    case -6:
-        blue6();
-        break;
-    case -5:
-        blue5();
-        break;
     case -4:
         blue4();
         break;
@@ -276,17 +189,8 @@ void run_auton(int selected){
         red4();
         break;
     case 5:
-        red5();
-        break;
-    case 6:
-        red6();
-        break;
-    case 7:
-        red7();
-    break;
-    case 8:
         skills();
-    break;
+        break;
     default:
         break;
     }

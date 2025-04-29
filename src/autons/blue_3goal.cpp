@@ -1,6 +1,6 @@
 #include "main.h"
 
-void blue1(){
+void blue2(){
     // setup
     chassis.setPose(0,0,-143.5);
     intake.set_encoder_units_all(MOTOR_ENCODER_ROTATIONS);

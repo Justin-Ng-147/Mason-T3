@@ -1,7 +1,7 @@
 #include "main.h"
 
 // T3 BLUE + CORNER
-void blue3(){
+void blue4(){
     chassis.setPose(0,0,0);
     intake.set_encoder_units_all(MOTOR_ENCODER_ROTATIONS);
     left.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_BRAKE);

@@ -9,7 +9,7 @@
 true: display odometry data and will run the test auton
 false: display competition screen to choose different autons
 */
-bool testing = true;
+bool testing = false;
 
 int auton_status = 0;
 int test_auton = -2;
