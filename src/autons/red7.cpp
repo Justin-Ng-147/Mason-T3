@@ -12,10 +12,10 @@ void red7(){
     //score ring
     chassis.moveDistance(5,1000);
     arm.move(127);
-    pros::delay(1000);
+    pros::delay(500);
     arm.brake();
 
-    // score mogo
+    // get mogo
     chassis.moveToPoint(10.5, 25.5, 2000, {.forwards=false,.maxSpeed=80,.minSpeed=5,.earlyExitRange=3});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
@@ -25,28 +25,47 @@ void red7(){
 
     // intake red ring
     set_intake_speed(127);
-    chassis.turnToPoint(34, 31.5, 2000,{.minSpeed=5,.earlyExitRange=3});
-    chassis.moveToPoint(34, 31.5, 2000);
-    pros::delay(1000);
+    chassis.turnToPoint(39, 31.5, 2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(39, 31.5, 2000);
+    pros::delay(2000);
 
     // move to hold blue ring
 
-    chassis.turnToPoint(36.37, 10.25, 2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.turnToPoint(37.7, -5, 2000,{.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(37.7, -5, 2000);
+    chassis.waitUntil(15);
     pros::Task skills_task2{[=]
         {
-            while(intake_distance.get_distance()>50) pros::delay(10);
+            while(intake_distance.get_distance()>30) pros::delay(10);
             set_intake_speed(0);
         }};
-    chassis.moveToPoint(36.37, 10.25, 2000);
 
     // setup swiper, drop mogo, and go to corner
-
-    chassis.moveToPoint(36.37, 0, 2000);
-    chassis.turnToPoint(46, -3, 2000,{.minSpeed=5,.earlyExitRange=1},false);
-    mogo.set_value(true);
+     
+    chassis.turnToPoint(48, -8, 2000,{.minSpeed=5,.earlyExitRange=1}, false);
     swiper.set_value(true);
-    chassis.moveToPoint(46,-3,1500,{.maxSpeed=80}, false);
-    chassis.turnToHeading(37,1000,{.minSpeed=5,.earlyExitRange=3}, false);
+    mogo.set_value(true);
+    pros::delay(200);
+
+    chassis.moveToPoint(48,-8,1500,{.maxSpeed=80}, false);
+    chassis.turnToHeading(36,1000,{.minSpeed=5,.earlyExitRange=3});
+    pros::delay(200);
+    swiper.set_value(false);
+
+    // grab mogo 2 while clearing obstacles
+    chassis.turnToPoint(43, 32, 2000);
+    set_intake_speed(127);
+    chassis.moveToPoint(43, 32, 2000);
+
+    chassis.turnToPoint(41, 49.78, 2000, {.forwards=false,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(41, 49.78, 2000, {.forwards=false}, false);
+
+    while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
+    pros::delay(50);
+    mogo.set_value(false);
+    left.brake();
+    right.brake();
+    chassis.cancelMotion();
 
 }
 
