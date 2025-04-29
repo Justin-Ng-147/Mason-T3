@@ -15,7 +15,7 @@ void blue3(){
             while(intake_distance.get_distance()>50) pros::delay(10);
         set_intake_speed(0);
         }};
-    chassis.moveToPoint(1,19,2000, {.forwards=false, .maxSpeed=50},false);
+    chassis.moveToPoint(1,19,2000, {.forwards=false, .maxSpeed=75},false);
     swiper.set_value(false);
     pros::delay(100);
     chassis.turnToPoint(18,20.5,1000,{.forwards=false},false);
@@ -24,15 +24,16 @@ void blue3(){
     pros::delay(50);
     mogo.set_value(false);
     set_intake_speed(127);
-    chassis.moveToPoint(0.4,-7.4, 1500, {},false);
-    set_intake_speed(80);
+    chassis.moveToPoint(0.4,-10, 1500, {},false);
+    mogo.set_value(true);
+    set_intake_speed(100);
     pros::Task skills_task2{[=]
         {
             while(intake_distance.get_distance()>50) pros::delay(10);
             set_intake_speed(0);
         }};
     chassis.turnToHeading(10, 1000, {}, false);
-    mogo.set_value(true);
+   
     chassis.moveToPoint(8,17,2000,{},false);
     chassis.turnToHeading(-166,1000,{},false);
     chassis.moveDistance(20,1000,{.forwards=false},false);
