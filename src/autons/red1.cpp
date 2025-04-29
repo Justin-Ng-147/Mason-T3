@@ -45,11 +45,11 @@ void red1(){
 
     chassis.turnToPoint(-3, 32, 2000, {.minSpeed=5, .earlyExitRange=3}, false);
     arm_move=false;
-    global_target=13500;
-    pros::delay(200);
+    global_target=15000;
+    pros::delay(1000);
     arm_move=true;
     arm.move(0);
-    chassis.moveToPoint(-3, 32, 2000, {.maxSpeed=80,.minSpeed=5, .earlyExitRange=3});
+    chassis.moveToPoint(-3, 32, 4000, {.maxSpeed=60,.minSpeed=5, .earlyExitRange=3});
 
     return;
     // //get middle ring
