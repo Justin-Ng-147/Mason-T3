@@ -12,7 +12,7 @@ false: display competition screen to choose different autons
 bool testing = true;
 
 int auton_status = 0;
-int test_auton = 8;
+int test_auton = -2;
 
 
 
@@ -30,7 +30,7 @@ void initialize() {
 	chassis.calibrate();
     pros::delay(100);
     // chassis.setPose(0,0,146);
-	chassis.setPose(0,0,131.5);
+	chassis.setPose(0,0,0);
 	// chassis.setPose(0,0,-12);
 
 	arm_to_pos();
@@ -205,7 +205,7 @@ void opcontrol() {
 			
 		
 			global_target=100;
-			// global_target=5000;
+			// global_target=15000;
 			
 		}
 		else if(master.get_digital(DIGITAL_B) != 1 && b_pressed){
@@ -218,7 +218,7 @@ void opcontrol() {
 			arm_move=false;
 			
 
-			global_target=1700;
+			global_target=1500;
 		}
 		else if(master.get_digital(DIGITAL_Y) != 1 && y_pressed){
 			y_pressed = false;
