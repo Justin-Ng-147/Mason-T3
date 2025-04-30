@@ -12,7 +12,7 @@ false: display competition screen to choose different autons
 bool testing = false;
 
 int auton_status = 0;
-int test_auton = -2;
+int test_auton = 5;
 
 
 
@@ -218,7 +218,7 @@ void opcontrol() {
 			arm_move=false;
 			
 
-			global_target=1500;
+			global_target=1800;
 		}
 		else if(master.get_digital(DIGITAL_Y) != 1 && y_pressed){
 			y_pressed = false;
