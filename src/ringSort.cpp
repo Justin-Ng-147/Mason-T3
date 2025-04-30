@@ -175,7 +175,10 @@ void arm_to_pos()
 {
   pros::Task arm_task_0{[=]
     {
+      // PID as of 4.29.2025 2:20PM
       lemlib::PID arm_pid(.01,0.0005,0.005,3000,true);
+      // Test PID
+      // lemlib::PID arm_pid(0.01,0.0005,0.01,3000,true);
       arm_pid.reset();
       arm.set_brake_mode_all(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
       int target;
