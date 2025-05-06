@@ -64,12 +64,12 @@ void red4(){
     // set_intake_speed(127);
 
     chassis.moveToPoint(-9,-1.5,2000,{}, false);
-    // chassis.turnToHeading(128.6,1000,{.minSpeed=5,.earlyExitRange=3}, false);
-    chassis.turnToPoint(0, -10, 2000, {.minSpeed=5, .earlyExitRange=3}, false);
+    chassis.turnToHeading(134,1000,{.minSpeed=5,.earlyExitRange=3}, false);
+    // chassis.turnToPoint(0, -10, 2000, {.minSpeed=5, .earlyExitRange=3}, false);
     set_intake_speed(0);
-    chassis.moveDistance(10, 2000, {.forwards=false,.maxSpeed=80});
+    chassis.moveDistance(10, 1000, {.forwards=false,.maxSpeed=80});
     swiper.set_value(true);
-    chassis.moveToPoint(0,-10,1500,{.maxSpeed=80}, false);
+    chassis.moveDistance(18, 1000,{.maxSpeed=80});
     chassis.turnToHeading(37,1000,{.minSpeed=5,.earlyExitRange=3}, false);
 
     swiper.set_value(false);
