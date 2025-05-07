@@ -1,4 +1,5 @@
 #include "main.h"
+#include "ringSort.hpp"
 
 // t3 bot red + finals goal rush
 void red4(){
@@ -49,8 +50,8 @@ void red4(){
     chassis.moveToPoint(-7,11,2000,{.minSpeed=5,.earlyExitRange=3});
 
     // grab mogo
-    chassis.turnToPoint(7.5,39,1000,{.forwards=false,.maxSpeed=50,.minSpeed=5,.earlyExitRange=4});
-    chassis.moveToPoint(7.5,39,4000,{.forwards = false,.maxSpeed=70});
+    chassis.turnToPoint(6,39,2000,{.forwards=false,.maxSpeed=35,.minSpeed=5,.earlyExitRange=3});
+    chassis.moveToPoint(6,39,4000,{.forwards = false,.maxSpeed=70});
     while(!mogo_seated() && chassis.isInMotion()) pros::delay(10);
     pros::delay(50);
     mogo.set_value(false);
@@ -66,11 +67,12 @@ void red4(){
     chassis.moveToPoint(-9,-1.5,2000,{}, false);
     chassis.turnToHeading(134,1000,{.minSpeed=5,.earlyExitRange=3}, false);
     // chassis.turnToPoint(0, -10, 2000, {.minSpeed=5, .earlyExitRange=3}, false);
-    set_intake_speed(0);
+    // set_intake_speed(0);
     chassis.moveDistance(10, 1000, {.forwards=false,.maxSpeed=80});
     swiper.set_value(true);
     chassis.moveDistance(18, 1000,{.maxSpeed=80});
     chassis.turnToHeading(37,1000,{.minSpeed=5,.earlyExitRange=3}, false);
+    set_intake_speed(0);
 
     swiper.set_value(false);
     chassis.moveToPoint(2, 39, 4000);

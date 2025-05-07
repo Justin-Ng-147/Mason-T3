@@ -9,7 +9,9 @@ void blue4(){
     mogo.set_value(true);
     swiper.set_value(true);
     set_intake_speed(65);
-    chassis.moveToPoint(0.8, 37, 2000, {}, false);
+
+    // grab mogo with swiper
+    chassis.moveToPoint(0.5, 37.5, 2000, {}, false);
     pros::Task skills_task1{[=]
         {
             while(intake_distance.get_distance()>50) pros::delay(10);
